@@ -1,8 +1,84 @@
-<h2>Accepted Students Event 2021</h2>
-<h4>Schedule of Events</h4>
-<p>
-  <div class="iframe-wrapper"
-    style="overflow: hidden; /* 16:9 aspect ratio */ padding-top: 56.25%; position: relative;"><iframe
-      style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;" align="top" frameborder="0"
-      height="700px" scrolling="no" src="https://danielindesigns.com/ase-schedule" width="100%"></iframe></div>
-</p>
+<style>
+  #countdown ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    text-align: center;
+    font-size: 16px;
+  }
+  #countdown li {
+    display: inline-block;
+    font-size: 1.5em;
+    list-style-type: none;
+    padding: 1em;
+    text-transform: uppercase;
+  }
+  #countdown li span {
+    display: block;
+    font-size: 4.5rem;
+  }
+  #countdown .message {
+    font-size: 4rem;
+  }
+  #content {
+    display: none;
+    padding: 1rem;
+  }
+  .countdown-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media all and (max-width: 768px) {
+    #countdown h1 {
+      font-size: 1.5rem;
+    }
+    #countdown li {
+      font-size: 1.125rem;
+      padding: .75rem;
+      #countdown
+    }
+    li span {
+      font-size: 3.375rem;
+    }
+  }
+</style>
+<div class="countdown-container">
+  <div id="countdown">
+    <ul>
+      <li><span id="days">41</span>days</li>
+      <li><span id="hours">7</span>Hours</li>
+      <li><span id="minutes">33</span>Minutes</li>
+      <li><span id="seconds">26</span>Seconds</li>
+    </ul>
+  </div>
+</div>
+<Script>
+(function () {
+  const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+  let birthday = "April 8, 2021 16:00:00",
+      countDown = new Date(birthday).getTime(),
+      x = setInterval(function() {    
+        let now = new Date().getTime(),
+            distance = countDown - now;
+        document.getElementById("days").innerText = Math.floor(distance / (day)),
+          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+        //do something later when date is reached
+        if (distance < 0) {
+          let headline = document.getElementById("headline"),
+              countdown = document.getElementById("countdown"),
+              content = document.getElementById("content");
+          headline.innerText = "It's time for ASE!! Please click here";
+          countdown.style.display = "none";
+          content.style.display = "block";
+          clearInterval(x);
+        }
+        //seconds
+      }, 0)
+  }());
+  </Script>
