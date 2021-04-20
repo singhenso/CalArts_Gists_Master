@@ -1,0 +1,140 @@
+<!--TemplateGroup:listArticleDefaultCustom-->
+<!--ArticleRepeat:Before:-->
+<style>
+  .ui-selectmenu-menu {
+    z-index: 1000;
+  }
+
+  #filter-degree-button {
+    display: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    .program-image {
+      display: block !important;
+    }
+  }
+</style>
+
+<div class="programslist-filters">
+  <span id="filters">
+    <select id="filter-school">
+      <option value="">View All</option>
+      <option value="Art">Art</option>
+      <option value="Critical Studies">Critical Studies</option>
+      <option value="Dance">Dance</option>
+      <option value="Film/Video">Film/Video</option>
+      <option value="Music">Music</option>
+      <option value="Theater">Theater</option>
+      <option value="Interdisciplinary">Interdisciplinary</option>
+    </select>
+
+    <select id="filter-degree">
+      <option value="">Degree Level</option>
+      <option value="BFA">BFA</option>
+      <option value="MFA">MFA/MA</option>
+      <option value="DMA">DMA</option>
+    </select>
+
+  </span>
+</div>
+
+<div class="row programslist row-eq-height">
+  <!--RepeatEnd:Before:-->
+  <!--ArticleTemplate-->
+  <article class="program col-xs-6 col-sm-4 col-md-3" data-school="[EDNcf:programs-school]"
+    data-degree="[EDNcf:IfExists:programs-bfa]BFA,[EDNcf:EndIf:programs-bfa][EDNcf:IfExists:programs-mfa]MFA,[EDNcf:EndIf:programs-mfa] [EDNcf:IfExists:programs-ma]MA,MFA,[EDNcf:EndIf:programs-ma] [EDNcf:IfExists:programs-dma]DMA[EDNcf:EndIf:programs-dma]">
+    <a href="[EasyDNNnews:Title:Link]" class="program-wrapper">
+      <div class="program-details callout">
+        [EasyDNNnews:IfExists:Image]
+        <div class="program-image">
+          <img class="lazyload" alt="[EasyDNNnews:Title]" src="[EasyDNNnews:Image]?quality=30"
+            data-src="[EasyDNNnews:Image]?w=160&h=197&mode=max&quality=90"
+            data-srcset="[EasyDNNnews:Image]?w=257&h=317&mode=max&quality=90 300w, [EasyDNNnews:Image]?w=480&h=592&mode=max&quality=90 480w, [EasyDNNnews:Image]?w=342&h=422&mode=max&quality=90 768w, [EasyDNNnews:Image] 1025w"
+            sizes="(min-width: 300px) 100vw, (min-width: 480px) 50vw, (min-width: 768px) 33.3vw, (min-width: 1025px) 25vw, 100vw" />
+        </div>
+        [EasyDNNnews:EndIf:Image]
+        <h4 class="program-title"><span>[EasyDNNnews:Title]</span></h4>
+
+        <div class="program-meta">
+          <span class="school">School of [EDNcf:programs-school]</span>
+        </div>
+
+        <span class="sr-only">[EasyDNNnews:Title]</span>
+    </a>
+    <!-- /program-wrapper -->
+</div>
+[EasyDNNnews:HasArticlePermissions]
+<div class="edn_adminActions">
+  [EasyDNNnews:ArticlePermissions:Edit]
+  [EasyDNNnews:ArticlePermissions:Publish]
+  [EasyDNNnews:ArticlePermissions:Approve]
+</div>
+[EasyDNNnews:HasArticlePermissionsEnd]
+
+
+
+</article>
+<!--ArticleEnd-->
+
+<!--ArticleRepeat:After:-->
+</div>
+
+<script>
+  $(document).ready(function () {
+
+    // refresh the select menus on "clear"
+    $(function () {
+      console.log('script started')
+      $('#filters select').selectmenu();
+      console.log('#filters selected');
+
+      function cleanFilters() {
+        $('#filters select').val('default');
+        $('#filters select').selectmenu('refresh').trigger("selectmenuchange");
+      }
+
+    });
+    initFilterable();
+
+    function initFilterable() {
+      // solution is here https://jsfiddle.net/JokerDan/tqv0ybbz/2/	
+      $('#filters').on("selectmenuchange", function () {
+        console.log('menu item changed');
+
+        chkBox = {
+          datatest: null
+        };
+        if ($('#3').is(':checked')) {
+          chkBox.datatest = "1";
+        } else {
+          chkBox.datatest = "";
+        }
+
+        $(".program").hide(0, function () {
+          $(this).addClass('hidden').removeClass('visible');
+        }).filter(function () {
+          var rtnData = "";
+
+          regExSchool = new RegExp($('#filter-school').val().trim(), "ig");
+
+          rtnData = (
+            $(this).attr("data-school").match(regExSchool)
+          );
+
+          //console.log(rtnData);
+          return rtnData;
+        }).fadeIn(500, "swing", function () {
+          $(this).addClass('visible').removeClass('hidden');
+        });
+      }); // end selectmenuchange function
+
+    }; // end initfilterable		
+
+
+
+  }); // end document ready
+</script>
+<!-- end row -->
+
+<!--RepeatEnd:After:-->
