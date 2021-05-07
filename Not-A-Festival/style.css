@@ -1,0 +1,43 @@
+<style>
+.festial-item {
+  margin-bottom:30px;
+}
+   .festial-item  a {
+    color: inherit;
+  }
+  .festial-item  a:hover {
+    color: #00a9c4;
+  }
+  .festial-item  img{
+    width: 100%;
+    height: auto;
+    max-width: none;
+  }
+  .festial-item  p{
+    margin: 0;
+  }
+  .festial-item  .title {
+margin: 5px 0 10px;
+}
+  .festial-item  .title h4{
+    border-bottom: 3px solid;
+    -webkit-transition: border-color 200ms ease-out;
+    -moz-transition: border-color 200ms ease-out;
+    -o-transition: border-color 200ms ease-out;
+    transition: border-color 200ms ease-out;
+    margin: 0;
+    font-weight: bold;
+    display: inline;
+    line-height: 1.3em;
+    -webkit-transition: color 200ms ease-out;
+    -moz-transition: color 200ms ease-out;
+    -o-transition: color 200ms ease-out;
+    transition: color 200ms ease-out;
+    font-size: 18px;
+  }
+  .festial-item  span{
+    margin-top: .5em;
+    text-transform: uppercase;
+    font-size: .8em;
+  }
+</style>
