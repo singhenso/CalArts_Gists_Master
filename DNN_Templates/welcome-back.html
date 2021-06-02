@@ -1,0 +1,58 @@
+<div class="welcomecard c1">
+  <h4>Registration &amp; Advising</h4>
+  <ul>
+    <li>
+      <div>August 10</div>
+      <p>Fall 2021 registration for classes begins
+      </p>
+    </li>
+    <li>
+      <div>September</div>
+      <p>Orientation schedule and information will be sent to students by June 17</p>
+    </li>
+    <li>
+      <div>September 9</div>
+      <p>Course Advising Day
+      </p>
+    </li>
+    <li>
+      <div>September 13</div>
+      <p>Fall 2021 Classes begin
+      </p>
+    </li>
+  
+  </ul>
+  </div>
+  
+  <style>
+    .welcomecard {    padding: 10px; border: 1px solid #58585b;    height: 100%;}
+    .welcomecard h4 {  border-bottom: 1px solid rgb(0, 0, 0); display: inline-block; padding-bottom: 5px;margin:0;    margin-bottom: 15px; margin-top:5px;}
+    .welcomecard ul { margin-left: 0px; list-style: none;}
+    .welcomecard ul li div{font-weight:700;margin-bottom:3px;}
+    .welcomecard ul li:last-of-type p {margin-bottom:0;}
+  
+    .c1 {border: 2px solid #58585b;}
+    .c1 h4 {border-bottom: 1px solid #58585b}
+  
+    .c2 {border: 2px solid #00a9c4;}
+    .c2 h4 {border-bottom: 1px solid #006778}
+  
+    .c3 {border: 2px solid #58585b; background-color: #d7d7d7;}
+    .c3 h4 {border-bottom: 1px solid #58585b}
+  
+    @media screen and (max-width: 768px) {
+    .welrow {
+      flex-direction: column;
+    }
+    .welcomecard {
+      margin: 15px 0;
+    }
+  }
+  
+  </style>
+  
+  <script>
+  $(".welcomecard").parents('.row').css('display', 'flex').addClass("welrow");;
+
+  </script>
+  
