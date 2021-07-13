@@ -1,0 +1,16 @@
+<style>
+#dnn_ctr22340_Default_PlaceHolderControl .row{
+  display: flex;
+  flex-direction: row;
+  grid-gap: 15px;
+}
+#dnn_ctr22340_Default_PlaceHolderControl .col-md-6 {
+  flex: 50%;
+}
+#dnn_ctr22340_Default_PlaceHolderControl .col-md-6:nth-child(1) {
+  padding-left:0;
+}
+#dnn_ctr22340_Default_PlaceHolderControl .col-md-6:nth-child(2) {
+  padding-right:0;
+}
+</style>
